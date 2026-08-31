@@ -40,7 +40,7 @@ happened on your machine.** Everything we know comes from your report.
 
 Please keep the details private until a fixed version is available, so that
 users are not exposed to a problem they cannot yet avoid. If you would like to
-be credited in the [CHANGELOG](CHANGELOG.md), say so in your report — we will
+be credited in the [CHANGELOG](https://github.com/aporo0711/glyphcove-docs/blob/main/CHANGELOG.md), say so in your report — we will
 not name you unless you ask us to.
 
 There is no bug bounty programme, and we cannot pay for reports.
@@ -115,7 +115,7 @@ GlyphCove は利用状況を一切集めていないため、**お使いの環�
 ### 公表について
 
 修正版が出るまでは、内容を公にしないでください。まだ避けようのない問題に
-利用者をさらすことになるためです。[変更履歴](CHANGELOG.md)にお名前を載せてよければ、
+利用者をさらすことになるためです。[変更履歴](https://github.com/aporo0711/glyphcove-docs/blob/main/CHANGELOG.md)にお名前を載せてよければ、
 報告にその旨をお書きください。お申し出が無いかぎり、こちらから名前を出すことはありません。
 
 報奨金の制度はありません。報告に対して金銭をお支払いすることはできません。

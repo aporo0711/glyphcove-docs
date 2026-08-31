@@ -38,11 +38,11 @@ Markdown cannot express everything Word can, and the reverse is just as true. Wh
 
 ## Will features that are free today become paid later?
 
-Some features are planned to require a paid Pro licence in a future release (Word / Excel output, the reverse conversions, and so on). But the line is already drawn, in full, in the README under "[Pricing plans (advance notice)](../../README.md)" — and **features declared "stays free" (writing, previewing, pasting, and basic HTML / PDF output) will not be moved behind a licence later**. We promise no dates. Until a version says otherwise, everything remains free.
+Some features are planned to require a paid Pro licence in a future release (Word / Excel output, the reverse conversions, and so on). But the line is already drawn, in full, in the README under "[Pricing plans (advance notice)](https://github.com/aporo0711/glyphcove-docs/blob/main/README.md)" — and **features declared "stays free" (writing, previewing, pasting, and basic HTML / PDF output) will not be moved behind a licence later**. We promise no dates. Until a version says otherwise, everything remains free.
 
 ## Can I use it at work, commercially?
 
-Yes. **It is free to use, commercially or non-commercially, with no time limit** (and no limit on machines or people). It is closed-source software, and redistribution is not permitted. The summary is in the README's [License section](../../README.md); the full text that actually governs is the bundled LICENSE.
+Yes. **It is free to use, commercially or non-commercially, with no time limit** (and no limit on machines or people). It is closed-source software, and redistribution is not permitted. The summary is in the README's [License section](https://github.com/aporo0711/glyphcove-docs/blob/main/README.md); the full text that actually governs is the bundled LICENSE.
 
 ## How much will Pro cost?
 

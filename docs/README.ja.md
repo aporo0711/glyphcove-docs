@@ -2,13 +2,13 @@
 
 Markdown を見たまま編集し、Word・Excel・PDF・HTML と相互変換するエディタ拡張。
 
-> **本拡張機能の利用には [GlyphCove 使用許諾契約書](../LICENSE)（版 1.3）が適用されます。**
+> **本拡張機能の利用には [GlyphCove 使用許諾契約書](https://github.com/aporo0711/glyphcove-docs/blob/main/LICENSE)（版 1.3）が適用されます。**
 > インストール・複製または使用により、本契約に同意したものとみなされます。
-> 全文は同梱の [LICENSE](../LICENSE) にあり、要点は[ライセンス](#ライセンス)節にまとめています。
+> 全文は同梱の [LICENSE](https://github.com/aporo0711/glyphcove-docs/blob/main/LICENSE) にあり、要点は[ライセンス](#ライセンス)節にまとめています。
 
-**English**: [README](../README.md)
+**English**: [README](https://github.com/aporo0711/glyphcove-docs/blob/main/README.md)
 
-変更履歴: [CHANGELOG.md](../CHANGELOG.md) ／ フィードバック: [CONTRIBUTING.md](../CONTRIBUTING.md)
+変更履歴: [CHANGELOG.md](https://github.com/aporo0711/glyphcove-docs/blob/main/CHANGELOG.md) ／ フィードバック: [CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ![Excel で選択した範囲を GlyphCove のプレビューへ貼り付けているところ](https://raw.githubusercontent.com/aporo0711/glyphcove-docs/main/docs/images/store/gifa-ja.gif)
 
@@ -174,7 +174,7 @@ code --install-extension glyphcove-vX.Y.Z.vsix
 
 ## ライセンス
 
-本拡張機能の利用には **[GlyphCove 使用許諾契約書](../LICENSE)**（版 1.3）が適用されます。全文は同梱の [LICENSE](../LICENSE) にあり、拡張機能の中からはコマンドパレットの「**GlyphCove: 使用許諾契約書を表示**」でいつでも開けます。
+本拡張機能の利用には **[GlyphCove 使用許諾契約書](https://github.com/aporo0711/glyphcove-docs/blob/main/LICENSE)**（版 1.3）が適用されます。全文は同梱の [LICENSE](https://github.com/aporo0711/glyphcove-docs/blob/main/LICENSE) にあり、拡張機能の中からはコマンドパレットの「**GlyphCove: 使用許諾契約書を表示**」でいつでも開けます。
 
 要点だけ挙げます（**下の要約は契約の一部ではありません**。効力を持つのは LICENSE の全文です）。
 

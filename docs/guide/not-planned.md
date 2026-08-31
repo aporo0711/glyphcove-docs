@@ -13,6 +13,6 @@ Finding out after installation that a tool is not what you expected is the most 
 7. **Markdown dialects beyond GFM + YAML front matter** — more dialects means the same file looks different in different places
 8. **Bundling plantuml.jar** — which licence of PlantUML to run is your choice ([how to choose](requirements.md))
 9. **Per-update notifications or popups** — we do not interrupt your work. Changes are announced in the CHANGELOG and Releases
-10. **Removing features from the free version later** — features declared "stays free" ([pricing plans](../../README.md)) will not be moved behind a licence afterwards
+10. **Removing features from the free version later** — features declared "stays free" ([pricing plans](https://github.com/aporo0711/glyphcove-docs/blob/main/README.md)) will not be moved behind a licence afterwards
 
 Questions or requests about items on this list may be answered with a link to this page (thank you for understanding). Something that *should* work but does not is a bug, not a non-goal — please check the [FAQ](faq.md) and [Known normalisations and limitations](limitations.md), then head to [Issues](https://github.com/aporo0711/glyphcove-docs/issues).
