@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 脆弱性の報告 / Report a vulnerability
+    url: https://github.com/aporo0711/glyphcove-docs/security/advisories/new
+    about: 公開の Issue にせず、非公開の報告をお使いください。詳細は SECURITY.md にあります。
+  - name: FAQ（よくある質問）
+    url: https://github.com/aporo0711/glyphcove-docs/blob/main/docs/guide/faq.ja.md
+    about: 報告の前に、よくある質問と既知の制限をご確認ください。
+  - name: FAQ (English)
+    url: https://github.com/aporo0711/glyphcove-docs/blob/main/docs/guide/faq.md
+    about: Please check the FAQ and known limitations before filing.
