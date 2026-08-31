@@ -88,8 +88,9 @@ Several `.md` files can be merged into a single PDF / HTML / Word / Excel file. 
 
 - **The interface follows your VS Code display language** — English and Japanese are supported.
 - **What GlyphCove writes into a converted file follows the language of the document itself**, not your display language. An English Markdown file converts to a Word document with a `Contents` heading, `Note` / `Tip` / `Important` / `Warning` / `Caution` callout titles, `Figure 1` / `Table 1` captions and a `CONFIDENTIAL` watermark; a Japanese one gets `目次`, `ノート`, `図 1`, `社外秘`. Generated HTML declares the matching `lang`.
-- The language is read from the document: front matter `lang:` (or `language:` / `言語:`) if it is there, otherwise from the writing in the body. **Both are decided by the file alone, so the same input always produces the same output** — a converted document does not change because a different person ran the conversion. Only a document with no language in it at all (a bare table of numbers) falls back to your display language.
+- The language is read from the document: front matter `lang:` (or `language:` / `言語:`) if it is there, otherwise from the writing in the body. **Both are decided by the file alone, so the wording GlyphCove writes into your document does not change because a different person ran the conversion.** Only a document with no language in it at all (a bare table of numbers) falls back to your display language.
 - **Messages about a conversion follow your display language** — the conversion log (`.log.txt`), the quality reports and the warning text. They describe the run, not the document.
+- ⚠ **An Excel file carries some of those messages inside it.** `Markdown → Excel` adds sheets that report on the conversion — `_Warnings`, and the reason column of `_Assets` — and their text follows **your** display language. So when a conversion has something to report, two people converting the same file get workbooks that differ **in those sheets**. Everything else, `_Metadata` included, is decided by the document, and a conversion with nothing to report gives both people the same workbook. Turn the extra sheets off with the `glyphcove.xlsx.metaSheets` setting.
 
 ## Fully offline
 
@@ -145,6 +146,8 @@ code --install-extension glyphcove-vX.Y.Z.vsix
 Please report bugs and feature requests on [Issues](https://github.com/aporo0711/glyphcove-docs/issues) (see [CONTRIBUTING.md](CONTRIBUTING.md) for what helps).
 
 ## Learn more
+
+**These pages ship with the extension**, in English and Japanese, so their **text** reads with no network connection: run **GlyphCove: Open the user guide** from the command palette and pick a page. ⚠ The screenshots inside them, and links that lead out of a page, still point at the web. The links below are the same pages there.
 
 - [FAQ](docs/guide/faq.md)
 - [Preview editing (WYSIWYG)](docs/guide/editing.md)
