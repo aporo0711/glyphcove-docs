@@ -2,7 +2,7 @@
 
 Convert Markdown to and from Word, Excel, PDF, and HTML, and edit it non-destructively in the preview.
 
-> **Use of this extension is governed by the GlyphCove License Agreement (version 1.2), included as [LICENSE](LICENSE).**
+> **Use of this extension is governed by the GlyphCove License Agreement (version 1.3), included as [LICENSE](LICENSE).**
 > Installing, copying, or using it is deemed acceptance of that agreement.
 > The agreement is written in Japanese and **the Japanese text is the authoritative version**; the [License](#license) section below is a convenience summary and is not part of the agreement.
 
@@ -169,7 +169,7 @@ License validation will be **fully offline** (no network traffic), in keeping wi
 
 ## License
 
-Use of this extension is governed by the **[GlyphCove License Agreement](LICENSE)** (version 1.2). The full text ships with the extension as [LICENSE](LICENSE), and you can open it at any time from the command palette with **GlyphCove: Show license agreement**. **The agreement is written in Japanese, and the Japanese text is the authoritative version.**
+Use of this extension is governed by the **[GlyphCove License Agreement](LICENSE)** (version 1.3). The full text ships with the extension as [LICENSE](LICENSE), and you can open it at any time from the command palette with **GlyphCove: Show license agreement**. **The agreement is written in Japanese, and the Japanese text is the authoritative version.**
 
 The points below are a summary for convenience (**this summary is not part of the agreement**; only the full text of LICENSE has effect).
 
@@ -179,6 +179,7 @@ The points below are a summary for convenience (**this summary is not part of th
 - **Because it is fully offline, a version you already have keeps working** even after we stop providing or supporting it (Article 17.4).
 - **This software reads, modifies, and creates your files.** Conversion is inherently lossy. **Back up your files before using it, and check the results** (Article 12).
 - Limitation of liability is in Article 15. **The cap does not apply to our wilful misconduct or gross negligence.**
+- **Support is the public issue tracker, in Japanese or English** (Article 16). We reply in the language you wrote in. There is no phone, video or screen-sharing support, we do not debug your environment, and **no response time is promised**.
 
 > ⚠ **This agreement has not yet been reviewed by a lawyer.** A review is planned before the paid edition ships. The version and effective date are stated at the top of LICENSE.
 
