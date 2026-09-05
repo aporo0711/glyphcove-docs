@@ -13,6 +13,18 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Changed / 変更
 
+- **The pricing notice now lists the direct Word / Excel → HTML conversions among the
+  planned Pro features, and says that the basic HTML / PDF output that stays free is the
+  output from Markdown.**
+  The product line itself has not changed: converting from Word / Excel was always on the
+  Word / Excel side of the line, and the "stays free" list has not shrunk. The notice simply
+  did not name those conversions before.
+
+  **料金の予定の有償リストに「Word / Excel → HTML の直接変換」を明記し、無料のままの
+  「HTML / PDF への基本出力」が Markdown からの出力であることを書き足しました。**
+  製品の線は変えていません。Word / Excel からの変換は元から線の Word / Excel 側にあり、
+  「無料のまま」の枠も狭めていません。予告文がその変換の名前を挙げていなかっただけです。
+
 - **We removed every encryption feature whose purpose is to keep information secret
   from the distributed package.**
   This extension bundles PDF.js in order to read PDFs, and that library carried the

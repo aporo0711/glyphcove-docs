@@ -164,8 +164,8 @@ Please report bugs and feature requests on [Issues](https://github.com/aporo0711
 
 **Every feature is free to use in the current version.** So that a later change never comes as a surprise, here is the line we plan to draw in a future release:
 
-- **Stays free**: writing, previewing and pasting Markdown, and the basic HTML / PDF output.
-- **Planned to require a paid Pro license (one-time purchase)**: output to Word / Excel (MD → DOCX / XLSX), the reverse conversions (PDF / Word / Excel / HTML → Markdown) and the two-stage pairs built on them, batch conversion and merging, quality reports, "Copy for Office", print headers/footers with page numbers, and watermarks.
+- **Stays free**: writing, previewing and pasting Markdown, and the basic HTML / PDF output from Markdown.
+- **Planned to require a paid Pro license (one-time purchase)**: output to Word / Excel (MD → DOCX / XLSX), the reverse conversions (PDF / Word / Excel / HTML → Markdown) and the two-stage pairs built on them, the direct Word / Excel → HTML conversions, batch conversion and merging, quality reports, "Copy for Office", print headers/footers with page numbers, and watermarks.
 - **Planned for Enterprise (for organisations)**: policy enforcement and procurement paperwork.
 
 License validation will be **fully offline** (no network traffic), in keeping with the product's zero-transmission design. Until a version says otherwise, everything above remains free. **The "stays free" list will not shrink in a later release.**
