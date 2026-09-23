@@ -205,6 +205,25 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   選択は新しい設定 `glyphcove.toolbar.show`（既定はオン）に保存するので、開いている
   ほかのエディタにも同時に効きます。
 
+- **The language of a code block can be set in the preview editor.**
+  The language label at the top left of a code block is a button now: press it, type or pick
+  a language (the list offers the languages the preview colours, plus `mermaid` / `plantuml`)
+  and press Enter. Until now the language could only be changed in the Markdown source.
+  ⚠ **Starting a code block has changed: it now starts on Enter after the fence line.**
+  Typing ` ```sql ` and pressing Enter makes a code block in SQL. Before, the block appeared
+  the moment the third backtick was typed, so the language could not be typed at all.
+  Changing only the language rewrites that block's fence as ` ``` ` (a `~~~` fence becomes
+  ` ``` `).
+
+  **プレビュー編集で、コードブロックの言語を指定できるようにしました。**
+  ブロック左上の言語の表示がボタンになりました。押して言語を入力するか候補から選び
+  （候補はプレビューで色が付く言語と `mermaid` / `plantuml`）、Enter で確定します。これまでは
+  Markdown のソースでしか言語を変えられませんでした。
+  ⚠ **コードブロックの始め方が変わりました: フェンスの行のあとの Enter で始まります。**
+  ` ```sql ` と打って Enter で SQL のコードブロックになります。これまでは 3 つ目のバッククォートを
+  打った瞬間にブロックになり、言語を打つ余地がありませんでした。言語だけを変えても、そのブロックの
+  フェンスは ` ``` ` で書き直されます（`~~~` のフェンスは ` ``` ` になります）。
+
 - **We added two-stage conversion across formats, by way of Markdown.**
   That adds ten routes: PDF → Word / Excel / HTML, Word → PDF / Excel,
   Excel → PDF / Word, and HTML → PDF / Word / Excel. It works by chaining the
