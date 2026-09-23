@@ -224,6 +224,23 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   打った瞬間にブロックになり、言語を打つ余地がありませんでした。言語だけを変えても、そのブロックの
   フェンスは ` ``` ` で書き直されます（`~~~` のフェンスは ` ``` ` になります）。
 
+- **Broken links can be fixed from a list of candidates.**
+  "Fix broken links in this document" (command palette, or the quick fix on a link problem)
+  goes through the link problems one at a time and offers what each could become: a file with
+  the same name elsewhere in the workspace, the file's real letter case, the nearest heading
+  for a missing `#anchor`, or a relative path for an absolute one. Nothing changes until you
+  pick, and everything you picked is one edit that one Undo takes back. The link check also
+  reports links whose letter case differs from the file (`image.png` for `Image.PNG`), which
+  open on Windows but break on Linux and GitHub.
+
+  **リンク切れを、候補から選んで直せるようにしました。**
+  「この文書のリンク切れを修正」（コマンドパレット、またはリンクの問題のクイックフィックス）で、
+  問題を 1 件ずつ、直し先の候補を出します: ワークスペース内の同じ名前のファイル、ファイルの
+  実際の大文字小文字、無い `#見出し` には近い見出し、絶対パスには相対パス。選ぶまで何も変えず、
+  選んだ修正はまとめて 1 回の Undo で戻せます。リンクの検査は、大文字小文字だけがファイルと
+  違うリンク（`Image.PNG` を `image.png` と書いたもの）も報告します。Windows では開けますが、
+  Linux や GitHub では切れるためです。
+
 - **We added two-stage conversion across formats, by way of Markdown.**
   That adds ten routes: PDF → Word / Excel / HTML, Word → PDF / Excel,
   Excel → PDF / Word, and HTML → PDF / Word / Excel. It works by chaining the
