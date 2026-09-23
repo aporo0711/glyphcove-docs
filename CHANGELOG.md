@@ -13,6 +13,18 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Changed / 変更
 
+- **The preview editor now shows the caret when a document opens.**
+  The caret starts at the beginning of the first paragraph (front matter at the top is
+  skipped), so you can type without clicking into the text first. Until now the editor
+  never took the focus, and no caret showed until you clicked. Opening a file with a single
+  click in the Explorer still leaves the focus in the Explorer.
+
+  **プレビュー編集で、文書を開いたときにキャレットが出るようにしました。**
+  キャレットは最初の段落の先頭に置きます（先頭の front matter は飛ばします）。本文を
+  クリックしなくても、そのまま入力を始められます。これまではエディタがフォーカスを
+  取らず、クリックするまでキャレットが出ていませんでした。エクスプローラーでシングル
+  クリックして開いたときは、これまでどおりフォーカスはエクスプローラーに残ります。
+
 - **The pricing notice now lists the direct Word / Excel → HTML conversions among the
   planned Pro features, and says that the basic HTML / PDF output that stays free is the
   output from Markdown.**
