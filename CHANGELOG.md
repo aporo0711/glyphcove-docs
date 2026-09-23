@@ -131,6 +131,30 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Fixed / 修正
 
+- **In a list, pressing Enter and then Tab to indent the new item turned the item above it
+  into a heading.**
+  The empty indented item was saved as a lone `-` under the previous line, which Markdown
+  reads as a heading underline; the editor then showed the heading, and the caret jumped to
+  the next item, so what you typed next landed there. An empty item is now kept on screen
+  and written to the file once you type into it, the same way an empty paragraph always
+  was. Three related cases are fixed as well: Enter at the end of a ticked task starts an
+  unticked one (instead of a ticked one whose checkbox vanished a moment later); a list
+  split in two — by Enter on an empty item or Shift+Tab — stays two lists instead of
+  merging into one list with blank lines between all its items (the second list is written
+  with `*`, or `)` for numbered lists); and Tab on an item that cannot be indented further
+  does nothing, instead of moving the focus out of the editor.
+
+  **リストで Enter のあと Tab で新しい項目を下げると、1 つ上の項目が見出しになっていました。**
+  空のまま下げた項目が、前の行の直下に `-` 1 文字として保存され、Markdown ではこれが
+  見出しの下線と読まれるためです。そのうえ画面も見出しに切り替わり、キャレットが次の項目へ
+  飛ぶので、続けて打った文字がそこに入っていました。空の項目は画面に残したまま、文字を
+  入力した時点でファイルに書くようにしました（空の段落と同じ扱いです）。あわせて次の 3 点も
+  直しました。チェック済みのタスクの末尾で Enter すると、未チェックの項目ができます（これまでは
+  チェック済みの項目ができ、少し後にチェックボックスが消えていました）。空の項目での Enter や
+  Shift+Tab で 2 つに分かれたリストが、1 つに合体して全項目の間に空行が入ることはなくなりました
+  （2 つ目のリストは `*`、番号付きは `)` で書きます）。それ以上下げられない項目での Tab は何も
+  せず、フォーカスがエディタの外へ移らなくなりました。
+
 - **In Excel conversion, the absolute path of the input file was written into the
   `_Metadata` sheet.**
   Handing someone a converted .xlsx let them see **the user name and folder layout of
