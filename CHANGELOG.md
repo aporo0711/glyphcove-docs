@@ -25,6 +25,21 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   取らず、クリックするまでキャレットが出ていませんでした。エクスプローラーでシングル
   クリックして開いたときは、これまでどおりフォーカスはエクスプローラーに残ります。
 
+- **Conversions now save their log files only when there is something to look at.**
+  Until now every conversion wrote a JSON log and a text log next to the output, under a new
+  name each time, and they piled up. The new setting `glyphcove.conversion.logs` decides when:
+  `onIssues` (the default — a file failed, the conversion was cancelled, or a warning needs
+  review), `always`, or `never`. When it has just written one, the completion notice offers "Stop
+  saving logs". The previous setting `glyphcove.conversion.saveLogs` is deprecated; if
+  you set it, it still applies until you set the new one.
+
+  **変換ログを、確認すべきことがあったときだけ保存するようにしました。**
+  これまでは変換のたびに JSON ログとテキストのログを出力先へ別名で書き、たまり続けていました。
+  新しい設定 `glyphcove.conversion.logs` で保存のタイミングを選べます: `onIssues`（既定。
+  失敗・中断・要確認の警告があったとき）/ `always` / `never`。ログを書いたときは、完了通知に
+  「今後ログを保存しない」ボタンが出ます。これまでの設定 `glyphcove.conversion.saveLogs` は
+  非推奨になりました。設定していた場合は、新しい設定を決めるまでその値が使われます。
+
 - **The pricing notice now lists the direct Word / Excel → HTML conversions among the
   planned Pro features, and says that the basic HTML / PDF output that stays free is the
   output from Markdown.**
