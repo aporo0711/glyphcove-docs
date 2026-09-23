@@ -178,6 +178,18 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Added / 追加
 
+- **The preview editor's toolbar can be hidden, and it stays hidden.**
+  The ✕ at the right end of the toolbar hides it, and documents opened afterwards open
+  without it as well; the icon in the editor title (or the command "Show or hide the
+  toolbar") brings it back. The choice is kept in the new setting `glyphcove.toolbar.show`
+  (on by default), so it also applies to every editor already open.
+
+  **プレビュー編集のツールバーを隠せるようにし、隠した状態を覚えるようにしました。**
+  ツールバー右端の「✕」で隠すと、以後に開く文書もツールバーなしで開きます。エディタの
+  タイトル部のアイコン（またはコマンド「ツールバーの表示・非表示を切り替える」）で戻せます。
+  選択は新しい設定 `glyphcove.toolbar.show`（既定はオン）に保存するので、開いている
+  ほかのエディタにも同時に効きます。
+
 - **We added two-stage conversion across formats, by way of Markdown.**
   That adds ten routes: PDF → Word / Excel / HTML, Word → PDF / Excel,
   Excel → PDF / Word, and HTML → PDF / Word / Excel. It works by chaining the
