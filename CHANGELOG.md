@@ -13,6 +13,26 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Changed / 変更
 
+- **Once paid features are switched on, Restricted Mode (an untrusted workspace) will still take
+  the location of the licence file from your user settings only.**
+  With paid features on, `glyphcove.license.file` is read when the extension starts. If a
+  folder's own settings were used, the `.vscode/settings.json` of a folder you have not trusted
+  could point it at a shared folder on another machine, and just opening the folder would make
+  Windows connect to that machine. In Restricted Mode this setting is therefore taken from your
+  user settings only, in the same way as the settings that name the browser and Java. Once you
+  trust the folder, its value applies again. Paid features are not switched on in this version,
+  and the licence file is not read at all, so nothing changes for you today.
+
+  **有償機能を有効にしたときも、制限モード（信頼していないワークスペース）ではライセンス
+  ファイルの場所をユーザー設定からしか読まないようにしました。**
+  有償機能を有効にすると、`glyphcove.license.file` は拡張機能の起動時に読みます。そこで
+  フォルダー側の値を使うと、信頼していないフォルダーの `.vscode/settings.json` が別のマシンの
+  共有フォルダーを指していた場合に、フォルダーを開いただけで Windows がそのマシンへ接続する
+  ことになります。そのため制限モードでは、この設定をユーザー設定からだけ読みます（ブラウザーや
+  Java の場所を指す設定と同じ扱いです）。フォルダーを信頼すると、フォルダー側の値がふたたび
+  使われます。この版では有償機能を有効にしておらず、ライセンスファイルを読むこともないため、
+  いまの動作は変わりません。
+
 - **The preview editor now shows the caret when a document opens.**
   The caret starts at the beginning of the first paragraph (front matter at the top is
   skipped), so you can type without clicking into the text first. Until now the editor
