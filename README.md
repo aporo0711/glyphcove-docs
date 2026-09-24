@@ -33,7 +33,7 @@ If what you need is a Markdown editor, VS Code already has good ones. This is fo
 - **Tables paste as tables.** From Excel, Word, a web page, box-drawn text, or CSV / TSV.
 - **Images stay as files.** Pasted images are written to `<document-name>_images/` and referenced by path — no base64 is ever generated.
 - **Paste into Word or PowerPoint with formatting.** The `Office` button on the toolbar copies both rich formatting and the original Markdown.
-- **Broken links are reported in the Problems panel.** Missing relative links, missing images, and `#heading` anchors that do not exist in the open document.
+- **Broken links are reported in the Problems panel, and can be fixed from candidates.** Missing relative links, missing images, and `#heading` anchors that do not exist — checked in the open document automatically, or in every Markdown file of the workspace with one command; fixed one document at a time.
 
 ![The GlyphCove preview with a Markdown document being edited](https://raw.githubusercontent.com/aporo0711/glyphcove-docs/main/docs/images/store/sp1-en.png)
 

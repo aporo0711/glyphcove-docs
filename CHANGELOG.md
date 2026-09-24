@@ -238,6 +238,19 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   打った瞬間にブロックになり、言語を打つ余地がありませんでした。言語だけを変えても、そのブロックの
   フェンスは ` ``` ` で書き直されます（`~~~` のフェンスは ` ``` ` になります）。
 
+- **The links of every Markdown file in the workspace can be checked at once.**
+  "Check links in the whole workspace" (command palette) runs the link check on every Markdown
+  file, not only the ones open in the preview editor, and lists the problems in the Problems
+  panel. The results stay until the next run or "Clear the workspace link check results"; a
+  file that changes on disk is checked again. Open documents are still checked automatically,
+  as before.
+
+  **ワークスペース内のすべての Markdown のリンクを、まとめて検査できるようにしました。**
+  「ワークスペース全体のリンクを検査」（コマンドパレット）で、プレビューで開いている文書に限らず
+  すべての Markdown ファイルを検査し、「問題」パネルに出します。結果は次に実行するか「ワークスペースの
+  リンク検査の結果を消す」まで残り、ディスク上で変わったファイルは検査し直します。開いている文書の
+  自動の検査はこれまでどおりです。
+
 - **Broken links can be fixed from a list of candidates.**
   "Fix broken links in this document" (command palette, or the quick fix on a link problem)
   goes through the link problems one at a time and offers what each could become: a file with
