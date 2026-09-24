@@ -205,6 +205,20 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   選択は新しい設定 `glyphcove.toolbar.show`（既定はオン）に保存するので、開いている
   ほかのエディタにも同時に効きます。
 
+- **JSON and SQL code blocks can be formatted.**
+  A "Format" button sits next to "Copy" on JSON / JSONC blocks and on SQL blocks (`sql` and
+  dialects such as `mysql`, `postgresql`, `tsql`, `plsql`, `sqlite`, `bigquery`). Indentation is
+  two spaces and keywords keep their case. Only spaces and line breaks change: code that cannot
+  be read, or that the dialect would read differently (a parameter such as `@name` it does not
+  know), is left exactly as it was, and the button says why. Undo takes a format back.
+
+  **JSON と SQL のコードブロックを整形できるようにしました。**
+  JSON / JSONC と SQL（`sql` のほか `mysql`・`postgresql`・`tsql`・`plsql`・`sqlite`・`bigquery`
+  などの方言）のブロックに、コピーの隣に「整形」ボタンが付きます。字下げは 2 スペース、キーワードの
+  大文字小文字は書いたままです。変わるのは空白と改行だけで、読めないコードや、方言が書いたとおりに
+  読めないコード（その方言が知らない `@name` のような引数）は 1 文字も変えず、ボタンに理由を出します。
+  整形は Undo で戻せます。
+
 - **The language of a code block can be set in the preview editor.**
   The language label at the top left of a code block is a button now: press it, type or pick
   a language (the list offers the languages the preview colours, plus `mermaid` / `plantuml`)
