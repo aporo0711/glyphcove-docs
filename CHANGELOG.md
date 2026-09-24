@@ -178,6 +178,26 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Fixed / 修正
 
+- **In Markdown → Word conversion, a link to a heading (`#heading`) now jumps to that heading.**
+  Before, such links went nowhere in Word: no heading carried a bookmark, and the link named
+  the fragment as it was written. Headings now carry hidden bookmarks (they do not appear in
+  Word's bookmark list), and `#heading` links point at them, found by the same rule the editor
+  uses (so `#Setup`, `#setup` and `#%E6%89%8B%E9%A0%86` all reach the right heading). A link to a
+  heading that does not exist is left as it was, and `#` alone ("back to top") goes to the top of
+  the document. Converting such a Word file back to Markdown gives the links their heading names
+  back. When several files are merged into one, a link to a heading now reaches the heading of
+  its own file even when another file has a heading with the same name.
+
+  **Markdown → Word 変換で、見出しへのリンク（`#見出し`）がその見出しへ飛ぶようにしました。**
+  これまで Word ではこのリンクがどこにも飛びませんでした（見出しにブックマークが無く、
+  リンクは書いたままの `#` の後ろを指していた）。見出しに隠しブックマーク（Word の
+  ブックマーク一覧には出ません）を付け、`#見出し` のリンクをそこへ向けます。見出しの
+  探し方はエディタと同じ規則なので、`#Setup`・`#setup`・`#%E6%89%8B%E9%A0%86` のどれでも
+  正しい見出しに着きます。無い見出しへのリンクはこれまでどおりで、`#` だけのリンク（「先頭へ
+  戻る」）は文書の先頭へ飛びます。その Word を Markdown に戻すと、リンクは見出しの名前に戻ります。
+  複数のファイルを 1 つに結合したときも、別のファイルに同じ名前の見出しがあっても、自分の
+  ファイルの見出しに着くようにしました。
+
 - **In Word → Markdown conversion, a table with merged cells lost values or moved them to the
   wrong column.**
   A cell merged across columns became a single Markdown cell, so the rows below it had more
