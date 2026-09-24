@@ -178,6 +178,86 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Fixed / 修正
 
+- **In Excel → Markdown and Excel → HTML conversion, a formula whose result is an error was
+  written as `[object Object]`.**
+  A formula that Excel shows as `#DIV/0!` (such as `=C6/B3` when B3 is empty) came out as
+  `[object Object]`. It is now written as the error the file stores: `#DIV/0!`, `#N/A`,
+  `#REF!`, `#VALUE!`, `#NAME?` and so on. The same happened to a formula whose result is 0,
+  FALSE or empty text, to a formula the file holds no result for, to a link cell whose text is
+  partly formatted, and to a link on a formula cell whose result is an error; these are fixed
+  as well. The newer errors of Excel 365, such as `#SPILL!` and `#CALC!`, are stored in the file
+  as `#VALUE!` with the real kind kept in separate data that this conversion does not read, so
+  they are still written as `#VALUE!`.
+
+  **Excel → Markdown と Excel → HTML の変換で、結果がエラーになる数式が `[object Object]` と
+  出ていました。**
+  Excel で `#DIV/0!` と表示される数式（B3 が空のときの `=C6/B3` など）が `[object Object]` に
+  なっていました。ファイルに保存されたエラー値のとおりに `#DIV/0!`・`#N/A`・`#REF!`・`#VALUE!`・
+  `#NAME?` などと書くように直しました。結果が 0・FALSE・空の文字列になる数式、結果が保存されて
+  いない数式、文字の一部に書式があるリンクのセル、結果がエラーになる数式のセルに付いたリンクも
+  同じように出ていたので、あわせて直しました。なお、Excel 365 の新しいエラー（`#SPILL!`・`#CALC!`
+  など）はファイルには `#VALUE!` として保存され、本当の種類はこの変換が読まない別のデータに
+  置かれるため、引き続き `#VALUE!` と出ます。
+
+- **In Excel → Markdown and Excel → HTML conversion, a formula in a date-formatted cell whose
+  result was an error or text made the whole conversion fail.**
+  A cell formatted as a date whose formula returned `#N/A` (a lookup that found nothing, for
+  example) or a text such as `TBD` stopped the conversion of the whole workbook with
+  "Invalid time value". A result of TRUE, or a text that looks like a number, came out as a
+  wrong date. These cells are now written with the value the file stores.
+
+  **Excel → Markdown と Excel → HTML の変換で、日付の書式のセルにある数式の結果がエラーや
+  文字列だと、変換全体が失敗していました。**
+  日付の書式のセルで、数式の結果が `#N/A`（検索で見つからなかったときなど）や `TBD` のような
+  文字列になっていると、「Invalid time value」でブック全体の変換が止まっていました。結果が TRUE
+  のときや、数字に見える文字列のときは、別の日付として出ていました。ファイルに保存された値の
+  とおりに書くように直しました。
+
+- **Excel → Markdown and Excel → HTML now say how many formulas had no saved result.**
+  A workbook written by a program rather than saved by Excel can hold formulas without their
+  results. Those cells are written empty, because the conversion does not calculate formulas,
+  but the warnings and the quality report said that every formula cell had been written as its
+  calculated value. They are now counted separately ("formula cells had no saved value in the
+  file and were written empty").
+
+  **Excel → Markdown と Excel → HTML で、結果が保存されていない数式の数を知らせるようにしました。**
+  Excel で保存したのではなく、プログラムが書き出したブックには、数式だけがあって結果が
+  保存されていないことがあります。変換では数式を計算しないのでそのセルは空欄になりますが、
+  警告と品質レポートは「数式セルはすべて計算結果の値で出力した」と言っていました。これを別に
+  数えて「保存された値が無い数式が N 個あり、空欄で出力しました」と知らせるようにしました。
+
+- **In Excel → Markdown and Excel → HTML conversion, a number or a date in a link cell now
+  follows the cell's number format.**
+  A link cell that Excel shows as `50%` came out as `0.5`, and a date in a link cell came out
+  as a string that depended on the time zone of the computer (such as
+  `Tue Jan 02 2024 09:00:00 GMT+0900`). They are now written like any other cell: `50%`,
+  `2024-01-02`.
+
+  **Excel → Markdown と Excel → HTML の変換で、リンクのセルの数値と日付にもセルの表示形式を
+  当てるようにしました。**
+  Excel で `50%` と表示されるリンクのセルが `0.5` と出たり、リンクのセルの日付が
+  `Tue Jan 02 2024 09:00:00 GMT+0900` のようにパソコンのタイムゾーンで変わる文字列で出たり
+  していました。ほかのセルと同じく `50%`・`2024-01-02` と書くようにしました。
+
+- **Excel → HTML wrote the address of a cell's link as it was, so a `javascript:` link in a
+  workbook ran script when it was clicked in the converted page.**
+  A cell's link now keeps its address only when it is a web (http, https), e-mail (mailto),
+  relative or in-document address. Any other address is written as the cell's text without the
+  link, and a warning says how many: `javascript:`, `vbscript:`, `data:`, `file:` and network
+  paths, however they are written (in capitals, with tabs or line breaks inside, or with
+  character references). Excel → Markdown follows the same rule, so it no longer writes such
+  links into the Markdown either. Links to files through a `file:` address or a network path
+  are therefore no longer kept as links.
+
+  **Excel → HTML でセルのリンクのアドレスをそのまま書いていたため、ブックの `javascript:` の
+  リンクが、変換したページでクリックするとスクリプトとして動いていました。**
+  セルのリンクは、アドレスが Web（http・https）・メール（mailto）・相対パス・文書内のリンクの
+  ときだけ残すようにしました。それ以外のアドレスは、大文字で書いてあっても、途中にタブや改行が
+  あっても、文字参照で書いてあっても、リンクを付けずにセルの文字だけを出力し、その数を警告で
+  知らせます（`javascript:`・`vbscript:`・`data:`・`file:`・ネットワーク上のパスなど）。
+  Excel → Markdown も同じ決まりにしたので、Markdown にもこうしたリンクを書きません。そのため、
+  `file:` のアドレスやネットワーク上のパスでファイルを指すリンクも、リンクとしては残りません。
+
 - **In a list, pressing Enter and then Tab to indent the new item turned the item above it
   into a heading.**
   The empty indented item was saved as a lone `-` under the previous line, which Markdown
