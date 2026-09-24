@@ -278,6 +278,105 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   Excel → Markdown も同じ決まりにしたので、Markdown にもこうしたリンクを書きません。そのため、
   `file:` のアドレスやネットワーク上のパスでファイルを指すリンクも、リンクとしては残りません。
 
+- **Word → HTML wrote the address of a link as it was, so a `javascript:` link in a document
+  ran script when it was clicked in the converted page. Word → Markdown and HTML → Markdown
+  wrote such links into the Markdown, and Excel → Markdown turned cell text written the way
+  Markdown writes a link (square brackets, then an address in parentheses) into a live link.**
+  The links in Word → HTML, Word → Markdown and HTML → Markdown now follow the rule Excel
+  conversion already follows: a link keeps its address only when it is a web (http, https),
+  e-mail (mailto), relative or in-document address. Any other address is written as the link's
+  text alone, and a warning says how many. Word → Markdown and HTML → Markdown apply the same
+  rule to pictures: a picture whose address is not allowed is written as its alternative text
+  alone, with a warning. In HTML → Markdown this includes pictures held in the page itself as
+  `data:` addresses and pictures given by a `file:` address or a network path, which were kept
+  before. The Markdown these two routes write now spells an
+  address the way Excel → Markdown does, so that a Markdown reader reads the address that was
+  checked and nothing more: spaces, line breaks and other control characters, parentheses and
+  angle brackets are percent-encoded (`a b(c)` is written `a%20b%28c%29`), and a backslash stays
+  a backslash. A link's title and a picture's alternative text are written on one line, with
+  the characters that would end them or start a link escaped. Word → HTML also no longer reads
+  a style map that a Word file carries inside it for the conversion library (with one, a
+  document could turn its own text into script in the page), and it writes only the elements
+  and attributes the conversion makes. In Excel → Markdown, text in a cell that would read as a
+  link or a link definition is now escaped so that it stays text, in a table and in a
+  paragraph; a callout (`[!NOTE]`), a footnote reference (`[^1]`) and a task box (`[ ]`) are
+  kept as they are. The characters Excel → Markdown uses on the way to mark bold, italic, code
+  and its own links are control characters taken out of everything the workbook says, so no
+  cell, sheet name or link address can stand in for them; private-use characters, such as
+  user-defined characters, are now kept as text. A code block is fenced past every run of
+  backticks in it (in Excel → Markdown, Word → Markdown and HTML → Markdown, and in
+  HTML → Markdown also a GitHub-style highlighted block and one whose language name holds a
+  backtick), so no line in it ends the block early. A sheet name that looks like an HTML tag is
+  written so that it stays text as well. Every quality report (`.report.md`) now writes what
+  comes from the file as text: sheet names, headers, footers, comments, style names, the file's
+  own name, and the warnings that quote them no longer read as a link or as HTML.
+  An address that starts with two or more slashes or backslashes in any mix (`////server`,
+  `\\\\server`, `/\server`) is now refused as a network path, as `\\server` and `//server`
+  already were — a browser on Windows opens `////server` on that machine. This applies to the
+  links Markdown → Word and Markdown → Excel write as well. In Word → Markdown and
+  HTML → Markdown every `<` in the text is now written as `&lt;` (before, only one followed by a
+  letter, `!` or `/` was, so a `<` at the end of one piece of text could join what began the next
+  into a tag or a link); the text reads the same, and code keeps its `<` as it is. A lone carriage
+  return (CR) in the text of a document or a cell now ends a line the way a line feed does, so it
+  no longer ends a code block, a table row or a list item early. The text of a link and the
+  alternative text of a picture no longer hold a link of their own for any Markdown reader
+  (Excel → Markdown, Word → Markdown and HTML → Markdown): a `(` right after an escaped `]` is
+  escaped too, because the marked library read a link whose text was itself written as a Markdown
+  link to a `javascript:` address as a live `javascript:` link inside the allowed one. In
+  Markdown → Word and Markdown → Excel, a picture whose `file:` address is written in capitals
+  (`FILE://server/share/a.png`, `File:///C:/images/a.png`) is now read the way the lowercase
+  `file:` address is — as that network path or that file — instead of as a file name next to the
+  document, which was never found.
+
+  **Word → HTML でリンクのアドレスをそのまま書いていたため、文書の `javascript:` のリンクが、
+  変換したページでクリックするとスクリプトとして動いていました。Word → Markdown と
+  HTML → Markdown も、こうしたリンクを Markdown に書いていました。Excel → Markdown では、
+  セルに Markdown のリンクの書きかた（角括弧の後に丸括弧でアドレス）で書いた文字が、そのまま
+  生きたリンクになっていました。**
+  Word → HTML・Word → Markdown・HTML → Markdown のリンクも、Excel の変換と同じ決まりにしました。
+  アドレスが Web（http・https）・メール（mailto）・相対パス・文書内のリンクのときだけリンクとして
+  残し、それ以外はリンクを付けずに文字だけを出力して、その数を警告で知らせます。
+  Word → Markdown と HTML → Markdown は画像にも同じ決まりを当て、アドレスが許されない画像は
+  代替テキストだけを出力して警告します。HTML → Markdown では、ページの中に `data:` のアドレスで
+  埋め込まれた画像と、`file:` のアドレスやネットワーク上のパスで指す画像もこれに当たります
+  （これまでは残していました）。この 2 つの経路が書く
+  Markdown では、アドレスを Excel → Markdown と同じ書きかたにしたので、Markdown を読む側には
+  確かめたアドレスがそのまま、それだけが届きます。空白・改行などの制御文字・丸括弧・山括弧は
+  パーセントエンコードし（`a b(c)` は `a%20b%28c%29` と書きます）、バックスラッシュは
+  バックスラッシュのまま残します。リンクのタイトルと画像の代替テキストは 1 行に書き、そこで
+  終わってしまう字やリンクを始める字はエスケープします。Word → HTML は、Word ファイルが
+  変換ライブラリ向けに中に持つスタイルの対応表を読まないようにしました（これがあると、文書が
+  自分の文字をページのスクリプトに変えられました）。また、変換が作る要素と属性以外は書かない
+  ようにしました。Excel → Markdown では、セルの文字のうちリンクやリンク定義として読まれる部分を、
+  表でも段落でも文字のまま残るようにエスケープします。コールアウト（`[!NOTE]`）・脚注の参照
+  （`[^1]`）・タスクの箱（`[ ]`）はそのまま残ります。Excel → Markdown が太字・斜体・コード・
+  自分のリンクの印として途中で使う文字は、ブックが持つ文字からすべて取り除く制御文字にしたので、
+  セル・シート名・リンクのアドレスでその印を偽ることはできません。外字などの私用領域の文字は、
+  文字のまま残るようになりました。コードブロックは、中にあるどのバッククォートの並びよりも長い
+  囲いで書くので（Excel → Markdown・Word → Markdown・HTML → Markdown。HTML → Markdown では
+  GitHub 形式の色付きのブロックと、言語名にバッククォートを含むものも）、中の行でブロックが
+  途中で終わることはありません。HTML のタグに見えるシート名も、文字のまま残るように書くように
+  しました。品質レポート（`.report.md`）はどれも、ファイルから来たもの（シート名・ヘッダー・
+  フッター・コメント・スタイル名・ファイル名と、それを引用する警告の文）を文字のまま書くので、
+  リンクや HTML として読まれることはありません。
+  スラッシュやバックスラッシュが（混ざっていても）2 つ以上続いて始まるアドレス（`////server`・
+  `\\\\server`・`/\server`）も、`\\server` や `//server` と同じくネットワーク上のパスとして
+  拒みます。Windows のブラウザは `////server` をそのマシンのものとして開くためです。
+  Markdown → Word と Markdown → Excel が書くリンクにも同じ決まりを当てます。Word → Markdown と
+  HTML → Markdown では、本文の `<` をすべて `&lt;` と書くようにしました（これまでは後ろが英字・
+  `!`・`/` のものだけで、文字のひと続きの最後の `<` が、次のひと続きの頭とつながってタグや
+  リンクになることがありました）。読んだときの文字は変わらず、コードの中の `<` はそのままです。
+  文書やセルの文字の中の単独の CR（復帰）は、LF（改行）と同じく行の終わりとして扱うので、
+  コードブロック・表の行・リストの項目がそこで途中で終わることはありません。リンクの文字と画像の
+  代替テキストも、どの Markdown の読み手にとっても、その中にリンクを持たないようにしました
+  （Excel → Markdown・Word → Markdown・HTML → Markdown）。エスケープした `]` の直後の `(` も
+  エスケープします。marked というライブラリが、文字そのものが `javascript:` へのリンクの書きかたに
+  なっているリンクを、許したリンクの中の生きた `javascript:` のリンクとして読んでいたためです。
+  Markdown → Word と Markdown → Excel では、画像の `file:` のアドレスを大文字で書いたもの
+  （`FILE://server/share/a.png`・`File:///C:/images/a.png`）も、小文字の `file:` と同じく、その
+  ネットワーク上のパスやファイルとして読むようにしました。これまでは文書の隣のファイル名として
+  読んでいたため、画像が見つかりませんでした。
+
 - **In a list, pressing Enter and then Tab to indent the new item turned the item above it
   into a heading.**
   The empty indented item was saved as a lone `-` under the previous line, which Markdown
