@@ -178,6 +178,26 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Fixed / 修正
 
+- **In Word → Markdown conversion, a table with merged cells lost values or moved them to the
+  wrong column.**
+  A cell merged across columns became a single Markdown cell, so the rows below it had more
+  cells than the header row. Markdown shows only as many cells in a row as the header has, so
+  the values in the last column did not appear in the preview. A cell merged down several rows
+  left the rows under it one cell short, and their values moved one column to the left. Merged
+  cells are now expanded the same way as in HTML → Markdown and Excel → Markdown: the value is
+  written in the top-left cell of the merged area, the other cells it covered are left empty,
+  and every row has as many cells as the header row. Unlike those two conversions, however,
+  Word → Markdown does not add a warning when a table has merged cells.
+
+  **Word → Markdown の変換で、結合したセルのある表の値が消えたり、別の列にずれたりしていました。**
+  横に結合したセルが Markdown では 1 つのセルになるため、その下の行のセルの数が見出しの行より
+  多くなっていました。Markdown は見出しの行のセルの数までしか表示しないので、最後の列の値が
+  プレビューに出ていませんでした。縦に結合したセルの下の行はセルが 1 つ足りなくなり、値が
+  1 列左にずれていました。HTML → Markdown や Excel → Markdown と同じく、結合した範囲の左上の
+  セルに値を書き、結合で覆われていたほかのセルは空欄にして、どの行も見出しの行と同じ数の
+  セルにするように直しました。ただし HTML → Markdown や Excel → Markdown と違い、
+  Word → Markdown では、結合したセルがあったことを知らせる警告は出しません。
+
 - **In Excel → Markdown and Excel → HTML conversion, a formula whose result is an error was
   written as `[object Object]`.**
   A formula that Excel shows as `#DIV/0!` (such as `=C6/B3` when B3 is empty) came out as
