@@ -11,6 +11,31 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ## Unreleased / 未リリース
 
+### Added / 追加
+
+- **When Markdown is converted to PDF or Word, the documents it links to — or names in its text —
+  can now be delivered with it.**
+  Choosing Markdown files that link to other Markdown files (or write their names, such as
+  `docs/spec.md`, in a sentence or in inline code) now offers to convert those too, followed to
+  the end. You check the full list first: every document and every linked file to copy is a
+  ticked row saying where it came from. In a delivery folder the documents keep their folders,
+  links between them point at the converted files at the right heading, and linked files such as
+  spreadsheets are copied beside them; merged into one file, the links jump inside it. A link to
+  something not delivered keeps its text and loses its link, with a warning, and a delivery writes
+  no log into its folder (the completion notice's Details shows the run). Setting
+  `glyphcove.conversion.followLinks`: `ask` (default) / `never`.
+
+  **Markdown を PDF・Word に変換するとき、リンク先や本文に名前を書いた文書もあわせて納品できる
+  ようにしました。**
+  ほかの Markdown ファイルにリンクしている（または文中やインラインコードに `docs/spec.md` のように
+  名前を書いている）ファイルを選ぶと、それらも辿れる限りあわせて変換するかを尋ねます。変換の前に
+  一覧をすべて確かめられます（文書と複製するリンク先のファイルが、どこから来たかとともにチェック済みで
+  並びます）。納品フォルダでは文書を元のフォルダ構成のまま置き、文書どうしのリンクを変換後のファイルの
+  見出しへ張り替え、表計算のファイルなどのリンク先を隣に複製します。1 つに結合したときは、リンクは
+  結合した文書の中で飛びます。納品しない先へのリンクは文字を残してリンクを外し、警告を出します。
+  納品では納品フォルダにログを書きません（完了通知の「詳細」で結果を見られます）。設定
+  `glyphcove.conversion.followLinks`: `ask`（既定）/ `never`。
+
 ### Changed / 変更
 
 - **Once paid features are switched on, Restricted Mode (an untrusted workspace) will still take
