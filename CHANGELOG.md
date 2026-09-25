@@ -226,6 +226,28 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   複数のファイルを 1 つに結合したときも、別のファイルに同じ名前の見出しがあっても、自分の
   ファイルの見出しに着くようにしました。
 
+- **In Markdown → Word conversion to another folder, links to local files pointed at the wrong
+  place.**
+  A link such as `sub/spec.md` was written as it was, so when the .docx was saved in another
+  folder, Word looked for `sub/spec.md` next to the .docx and found nothing. Each such link now
+  points at its real file, written relative to where the .docx is saved (not percent-encoded,
+  which Word cannot open). A link that cannot be written that way keeps its text but loses the
+  link, and the conversion says how many: a file on another drive, a file inside your user
+  folder when the .docx is saved outside it (the path would name your user folder), and a file
+  whose name Word cannot hold in a link (a control character, or `#` or `?` written as `%23` /
+  `%3F`). Saved next to the Markdown file, links are written as before.
+
+  **Markdown → Word 変換で別のフォルダに保存すると、ローカルのファイルへのリンクが違う場所を
+  指していました。**
+  `sub/spec.md` のようなリンクを書いたまま出力していたため、.docx を別のフォルダに保存すると、
+  Word は .docx の隣の `sub/spec.md` を探して見つけられませんでした。これからは、リンクは実際の
+  ファイルを、.docx を保存した場所からの相対パスで指します（Word が開けないパーセント符号化は
+  しません）。そう書けないリンクは、文字を残してリンクを外し、その件数を知らせます（別の
+  ドライブのファイル、.docx をユーザーのフォルダの外に保存するときのユーザーのフォルダの中の
+  ファイル〔パスにユーザーのフォルダ名が出るため〕、Word がリンクに書けない名前のファイル〔制御文字や、
+  `%23`・`%3F` で書いた `#`・`?` を含む名前〕）。Markdown ファイルの隣に保存するときは、
+  これまでどおり書いたままです。
+
 - **In Word → Markdown conversion, a table with merged cells lost values or moved them to the
   wrong column.**
   A cell merged across columns became a single Markdown cell, so the rows below it had more
