@@ -480,6 +480,25 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Added / 追加
 
+- **Once paid features are switched on, the purchase page can be opened from inside the extension.**
+  The notice shown when a Pro feature is declined gets an "Open purchase page" button next to
+  "Show license status", and so does "Show license status" itself while you have no Pro or
+  Enterprise key. The command "Open purchase page" joins the Command Palette as well. The page
+  opens in your browser: the Japanese page when VS Code is in Japanese, the English page
+  otherwise. It is the page's plain address, with nothing appended to show where you came from.
+  Paid features are not switched on in this version, so the button does not appear and the
+  command is not shown in the Command Palette yet. (Its name can still be listed in places such
+  as the Keyboard Shortcuts editor, but running it opens nothing.)
+
+  **有償機能を有効にしたときに、拡張機能の中から購入ページを開けるようにしました。**
+  Pro の機能を断る通知の「ライセンスの状態を表示」の隣と、Pro または Enterprise の鍵が無いあいだの
+  「ライセンスの状態を表示」の通知に「購入ページを開く」ボタンが付き、コマンドパレットにもコマンド
+  「購入ページを開く」が加わります。ページはブラウザーで開き、VS Code が日本語なら日本語のページ、
+  それ以外は英語のページです。アドレスはページのそのままのアドレスで、どこから開いたかを示すものは
+  何も付けません。この版では有償機能を有効にしていないため、ボタンはまだ出ず、コマンドも
+  コマンドパレットにはまだ表示されません（キーボード ショートカットの一覧などには名前が出ることが
+  ありますが、実行しても何も開きません）。
+
 - **The preview editor's toolbar can be hidden, and it stays hidden.**
   The ✕ at the right end of the toolbar hides it, and documents opened afterwards open
   without it as well; the icon in the editor title (or the command "Show or hide the
