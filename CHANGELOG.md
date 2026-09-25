@@ -188,9 +188,8 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   in the PDF carries an absolute path. A link that cannot be written that way keeps its text but
   loses the link, and the conversion says how many: a file on another drive, a path starting with
   `/`, a file inside your user folder when the PDF is saved outside it (the path would name your
-  user folder), and a link inside a Mermaid or PlantUML diagram. When several files are merged
-  into one PDF, their links to local files lose the link for now (the parts came from different
-  folders). Every heading of the PDF can now be the target of a link from another PDF.
+  user folder), and a link inside a Mermaid or PlantUML diagram. Every heading of the PDF can now
+  be the target of a link from another PDF.
 
   **Markdown → PDF 変換で、ローカルのファイルへのリンクが切れていて、しかもユーザー名入りの
   パスが入っていました。**
@@ -202,9 +201,27 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   PDF のリンクに絶対パスは書きません。そう書けないリンクは、文字を残してリンクを外し、その件数を
   知らせます（別のドライブのファイル、`/` で始まるパス、PDF をユーザーのフォルダの外に保存するときの
   ユーザーのフォルダの中のファイル〔パスにユーザーのフォルダ名が出るため〕、Mermaid・PlantUML の図の
-  中のリンク）。複数のファイルを
-  1 つの PDF に結合したときは、ローカルのファイルへのリンクを当面外します（元のフォルダが部分ごとに
-  違うため）。PDF のすべての見出しを、別の PDF からのリンクの飛び先にできるようにしました。
+  中のリンク）。PDF のすべての見出しを、別の PDF からのリンクの飛び先にできるようにしました。
+
+- **When several Markdown files were merged into one, a link from one of them to another led out of
+  the merged document, and links to local files could point at the wrong folder.**
+  A link to `sub/spec.md` at its heading `#setup` still named the separate Markdown file, which the
+  reader of the merged PDF or Word file does not have. Links between the merged files now jump
+  inside the merged document: to the heading the link names, or to the start of that file's part
+  (its first heading). A part with no heading has nothing to land on; its links go to the nearest
+  heading before it, and the conversion says how many. Links to other local files are written
+  relative to where the merged document is saved, from the folder each part came from — before,
+  the parts' different folders made PDF output drop them.
+
+  **複数の Markdown ファイルを 1 つに結合すると、ファイルどうしのリンクが結合した文書の外を指し、
+  ローカルのファイルへのリンクが違うフォルダを指すことがありました。**
+  `sub/spec.md` の見出し `#手順` へのリンクは、結合後も別の Markdown ファイルを指したままで、結合した
+  PDF や Word を受け取った人の手元にはそのファイルがありません。これからは、結合したファイルどうしの
+  リンクは結合した文書の中で飛びます（リンクが指す見出しへ。見出しを指していなければ、そのファイルの
+  部分の先頭＝最初の見出しへ）。見出しの無い部分には飛び先が無いため、その手前のいちばん近い見出しへ
+  飛ばし、その件数を知らせます。ほかのローカルのファイルへのリンクは、それぞれの部分の元のフォルダから
+  見て、結合した文書を保存した場所からの相対パスで書きます（これまで PDF では、部分ごとにフォルダが
+  違うためリンクを外していました）。
 
 - **In Markdown → Word conversion, a link to a heading (`#heading`) now jumps to that heading.**
   Before, such links went nowhere in Word: no heading carried a bookmark, and the link named
