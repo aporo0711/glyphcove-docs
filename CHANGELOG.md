@@ -178,6 +178,34 @@ version numbers follow [Semantic Versioning](https://semver.org/).
 
 ### Fixed / 修正
 
+- **In Markdown → PDF conversion, links to local files were dead and carried a path with your
+  user name.**
+  The browser that prints the PDF resolved every relative link (to `sub/spec.md`,
+  `../data/x.xlsx` and the like) against the temporary page it printed, so the PDF linked to
+  `C:/Users/<your name>/AppData/Local/Temp/…`: the link did not work, and your user name went
+  wherever the PDF went. Each such link now points at its real file, written relative to where
+  the PDF is saved (a link to another PDF opens that PDF; `#page=2` opens that page), and no link
+  in the PDF carries an absolute path. A link that cannot be written that way keeps its text but
+  loses the link, and the conversion says how many: a file on another drive, a path starting with
+  `/`, a file inside your user folder when the PDF is saved outside it (the path would name your
+  user folder), and a link inside a Mermaid or PlantUML diagram. When several files are merged
+  into one PDF, their links to local files lose the link for now (the parts came from different
+  folders). Every heading of the PDF can now be the target of a link from another PDF.
+
+  **Markdown → PDF 変換で、ローカルのファイルへのリンクが切れていて、しかもユーザー名入りの
+  パスが入っていました。**
+  PDF を印刷するブラウザが、相対リンク（`sub/spec.md` や `../data/x.xlsx` へのリンク）を
+  印刷した一時ページの場所で解決していたため、PDF のリンクは
+  `C:/Users/<ユーザー名>/AppData/Local/Temp/…` を指していました。リンクは開けず、ユーザー名が
+  PDF と一緒に出回っていました。これからは、リンクは実際のファイルを、PDF を保存した場所からの
+  相対パスで指します（別の PDF へのリンクはその PDF を開き、`#page=2` はそのページを開きます）。
+  PDF のリンクに絶対パスは書きません。そう書けないリンクは、文字を残してリンクを外し、その件数を
+  知らせます（別のドライブのファイル、`/` で始まるパス、PDF をユーザーのフォルダの外に保存するときの
+  ユーザーのフォルダの中のファイル〔パスにユーザーのフォルダ名が出るため〕、Mermaid・PlantUML の図の
+  中のリンク）。複数のファイルを
+  1 つの PDF に結合したときは、ローカルのファイルへのリンクを当面外します（元のフォルダが部分ごとに
+  違うため）。PDF のすべての見出しを、別の PDF からのリンクの飛び先にできるようにしました。
+
 - **In Markdown → Word conversion, a link to a heading (`#heading`) now jumps to that heading.**
   Before, such links went nowhere in Word: no heading carried a bookmark, and the link named
   the fragment as it was written. Headings now carry hidden bookmarks (they do not appear in
