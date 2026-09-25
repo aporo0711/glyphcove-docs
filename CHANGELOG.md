@@ -246,6 +246,26 @@ version numbers follow [Semantic Versioning](https://semver.org/).
   セルにするように直しました。ただし HTML → Markdown や Excel → Markdown と違い、
   Word → Markdown では、結合したセルがあったことを知らせる警告は出しません。
 
+- **In Word → Markdown and Word → HTML conversion, a table row that leaves its first columns
+  empty put its values in the wrong columns.**
+  In Word, a row can start (or end) with columns that hold no cell at all; a table whose
+  top-left corner is empty is the usual example. The values of such a row moved to the left:
+  the first value stood under the header of the first column, and each value after it was off
+  by the same number of columns. A cell merged down into such a row could also end up merged
+  with the wrong cell above it. The empty columns are now written as empty cells in both
+  conversions, so every value stands under its own header. In the HTML, those empty cells have
+  borders, where Word draws none. Columns that every row of a table leaves empty are not
+  written, so no column comes out empty from top to bottom.
+
+  **Word → Markdown と Word → HTML の変換で、先頭の列が空いている表の行の値が、別の列にずれて
+  いました。**
+  Word では、行の先頭（や末尾）の列にセルを置かないことができます。左上の角が空いた表が
+  よくある例です。そのような行の値が左に詰まり、先頭の値が 1 列目の見出しの下に出て、後ろの値も
+  同じ数だけずれていました。そのような行へ縦に結合したセルが、上の別のセルと結合したことに
+  なる場合もありました。どちらの変換でも空いている列を空のセルとして書き、どの値も自分の列の
+  見出しの下に出るように直しました。HTML では、Word では枠の無いその空のセルにも枠が付きます。
+  表のどの行も空けている列は書かないので、上から下まで空の列はできません。
+
 - **In Excel → Markdown and Excel → HTML conversion, a formula whose result is an error was
   written as `[object Object]`.**
   A formula that Excel shows as `#DIV/0!` (such as `=C6/B3` when B3 is empty) came out as
